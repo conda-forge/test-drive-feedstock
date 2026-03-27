@@ -22,6 +22,9 @@ requirements:
     - {{ compiler('m2w64_fortran') }}  # [win]
     - meson
     - ninja
+  run:
+    # ERROR (test-drive,lib/libtest-drive.0.dylib): Needed DSO lib/libgcc_s.1.1.dylib found in ['conda-forge/osx-64::libgcc==15.2.0=h08519bb_18']
+    - libgcc  # [osx]
 
 test:
   requires:
