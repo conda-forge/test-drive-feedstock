@@ -1,5 +1,5 @@
 {% set name = "test-drive" %}
-{% set version = "0.5.0" %}
+{% set version = "0.6.0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,10 +7,10 @@ package:
 
 source:
   url: https://github.com/fortran-lang/test-drive/releases/download/v{{ version }}/test-drive-{{ version }}.tar.xz
-  sha256: 38c29f9366ed6fb90ff10fcb7efe2cebf2f3ba003edb08e6f56d2d758a070cee
+  sha256: dca77ab3c646b99945f4a3cb75eb8c9885123a55cd509b8992307fabf7e7d07b
 
 build:
-  number: 1
+  number: 0
 
 requirements:
   build:
@@ -22,6 +22,9 @@ requirements:
     - {{ compiler('m2w64_fortran') }}  # [win]
     - meson
     - ninja
+  run:
+    # ERROR (test-drive,lib/libtest-drive.0.dylib): Needed DSO lib/libgcc_s.1.1.dylib found in ['conda-forge/osx-64::libgcc==15.2.0=h08519bb_18']
+    - libgcc  # [osx]
 
 test:
   requires:
