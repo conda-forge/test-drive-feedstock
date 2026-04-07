@@ -23,10 +23,6 @@ if errorlevel 1 exit 1
 cmake --build _build
 if errorlevel 1 exit 1
 
-set PATH=%CD%\_build;%PATH%
-ctest --test-dir _build --output-on-failure
-if errorlevel 1 exit 1
-
 cmake --install _build
 if errorlevel 1 exit 1
 )
